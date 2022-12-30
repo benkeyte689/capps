@@ -1,0 +1,47 @@
+#Please follow these instructions to implement crome-repo (101) on your device or system wide (use DNS)
+##Linux ONLY##
+#! /bin/bash
+
+find [path-to-101] -type f | xargs << aaa xargs
+
+aaa
+
+#systemd(do not use cron)
+
+#101x.services
+#/etc/systemd/system/101x.service
+
+[Unit]
+Description=101x-restart
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/sec1
+ 
+[Install]
+WantedBy=multi-user.target
+
+# /etc/systemd/system/101x-restart.service
+
+[Unit]
+Description=101x-restart
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl restart 101x.service
+ 
+[Install]
+WantedBy=multi-user.target
+
+#/etc/systemd/system/101x-restart.timer
+
+[Unit]
+Description=Start 101x.service Every 2 Minutes
+
+[Timer]
+OnUnitInactiveSec=1m
+Persistent=true
+
+[Install]
+WantedBy=timers.target
