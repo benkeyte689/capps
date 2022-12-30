@@ -1,0 +1,5 @@
+#! INSTALL FiGLET
+
+#! /bin/bash
+
+echo "HAPPY NEW YEAR 2023!!!" | xargs figlet
